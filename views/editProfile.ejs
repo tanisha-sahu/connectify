@@ -1,0 +1,107 @@
+<% layout("./templates/index.ejs")%>
+<link rel="stylesheet" href="/styles/editProfile.css" />
+<body>
+  <div class="profile-edit-container">
+    <h3 class="text-center mb-4">Edit Your Profile</h3>
+
+    <!-- Edit Form -->
+    <form class="form-section" method="POST" action="/profile/edit/<%=User._id%>" enctype="multipart/form-data">
+      <!-- Profile Image -->
+      <div class="text-center">
+        <img
+          src="<%=User.userImg%>"
+          alt="User Profile"
+          class="profile-image"
+          id="profileImagePreview"
+        />
+        <label
+          for="profileImage"
+          class="upload-btn btn btn-outline-primary btn-sm"
+          >Change Photo</label
+        >
+        <input
+          type="file"
+          id="profileImage"
+          class="d-none"
+          accept="image/*"
+          name="userImg"
+          onchange="previewImage(event)"
+        />
+      </div>
+      <!-- Name -->
+      <div class="mb-3 mt-3">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          placeholder="Enter your name"
+          value="<%=User.name%>"
+          required
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="mail" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="mail"
+          name="mail"
+          placeholder="Enter your email"
+          value="<%=User.mail%>"
+          required
+        />
+      </div>
+
+      <!-- About -->
+      <div class="mb-3">
+        <label for="about" class="form-label">About</label>
+        <input
+          type="text"
+          class="form-control"
+          id="about"
+          name="about"
+          placeholder="Tell us something about yourself"
+          maxlength="100"
+          required
+          oninput="limitWords(this, 10)"
+          value="<%= User.about || '' %>"
+        />
+        <small class="form-text text-muted">Maximum 10 words.</small>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-update btn-lg w-100">
+          Update Profile
+        </button>
+      </div>
+    </form>
+    <div class="text-center mt-4">
+      <a href="/user/changePass" class="btn btn-outline-secondary btn-sm w-100">
+        Change Password
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Preview Profile Image
+    function previewImage(event) {
+      const reader = new FileReader();
+      reader.onload = function () {
+        const output = document.getElementById("profileImagePreview");
+        output.src = reader.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+    function limitWords(input, maxWords) {
+      const words = input.value.split(/\s+/).filter((word) => word.length > 0);
+      if (words.length > maxWords) {
+        input.value = words.slice(0, maxWords).join(" ");
+      }
+    }
+  </script>
+</body>

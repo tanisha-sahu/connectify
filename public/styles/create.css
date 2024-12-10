@@ -1,0 +1,115 @@
+/* Overall Page */
+.blog-post-page {
+  background: linear-gradient(to bottom, #ffffff, #f4f8fc);
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Blog Post Container */
+.blog-post-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Header */
+.blog-post-container h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #34495e;
+}
+
+/* Drag-and-Drop Zone */
+.drag-drop-zone {
+  position: relative;
+  border: 2px dashed #3498db;
+  border-radius: 10px;
+  padding: 20px;
+  background: #eaf6fc;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.drag-drop-zone.drag-over {
+  background: #d0e9f8;
+  border-color: #1d6fa5;
+}
+
+.drag-text {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+}
+
+.drag-text span {
+  color: #3498db;
+  font-weight: 600;
+}
+
+.drag-drop-preview {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
+/* Form Inputs */
+.form-control {
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+textarea.form-control {
+  resize: none;
+}
+
+/* Submit Button */
+.btn-publish {
+  background: #3498db;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.btn-publish:hover {
+  background: #216f9b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+  .blog-post-container {
+    padding: 20px;
+  }
+}

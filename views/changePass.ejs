@@ -1,0 +1,83 @@
+<% layout("./templates/index.ejs")%>
+<link rel="stylesheet" href="/styles/changePass.css" />
+<body>
+<div class="password-change-container">
+  <h3 class="text-center mb-4">Change Password</h3>
+  <form id="changePasswordForm" class="form-section" action="/user/changePass" method="post">
+    <!-- Current Password -->
+    <div class="form-group">
+      <label for="currentPassword" class="form-label">Current Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="currentPassword"
+        name="currentPassword"
+        placeholder="Enter your current password"
+        required
+      />
+    </div>
+
+    <!-- New Password -->
+    <div class="form-group">
+      <label for="newPassword" class="form-label">New Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="newPassword"
+        name="newPassword"
+        placeholder="Enter your new password"
+        required
+      />
+    </div>
+
+    <!-- Confirm New Password -->
+    <div class="form-group">
+      <label for="confirmPassword" class="form-label">Confirm New Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="confirmPassword"
+        name="confirmPassword"
+        placeholder="Re-enter your new password"
+        required
+      />
+    </div>
+
+    <div id="errorMessage" class="error-message text-center mb-3"></div>
+
+    <!-- Submit Button -->
+    <div class="form-group text-center mt-4">
+      <button type="submit" class="btn-submit">
+        Update Password
+      </button>
+    </div>
+  </form>
+</div>
+</body>
+<script>
+  // Password Validation Logic
+  document.getElementById("changePasswordForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent form submission to server
+
+    const currentPassword = document.getElementById("currentPassword").value.trim();
+    const newPassword = document.getElementById("newPassword").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+    const errorMessage = document.getElementById("errorMessage");
+
+    // Clear previous error message
+    errorMessage.textContent = "";
+
+    // Validate new password
+    if (currentPassword === newPassword) {
+      errorMessage.textContent = "New password must be different from the current password.";
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      errorMessage.textContent = "New password and confirm password do not match.";
+      return;
+    }
+
+    // If all validations pass
+    this.submit();
+  });
+</script>

@@ -1,0 +1,52 @@
+<% layout("./templates/index.ejs")%>
+<link rel="stylesheet" href="/styles/create.css" />
+
+<body>
+  <div class="blog-post-page">
+    <div class="blog-post-container">
+      <h3 class="text-center mb-4">Edit Your Blog</h3>
+
+      <form
+        class="form-blog-post"
+        action="/blog/edit/<%=Blog._id%>"
+        method="post"
+      >
+        <!-- Blog Title -->
+        <div class="form-group mb-4">
+          <label for="title" class="form-label">Title</label>
+          <input
+            value="<%=Blog.title%>"
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            placeholder="Enter your blog title"
+            maxlength="100"
+            required
+          />
+        </div>
+
+        <!-- Blog Description -->
+        <div class="form-group mb-4">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            class="form-control"
+            id="description"
+            name="description"
+            rows="6"
+            placeholder="Write your blog description here..."
+            maxlength="1000"
+            required
+          ><%=Blog.description%></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-publish btn-lg w-100">
+            Edit Blog
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

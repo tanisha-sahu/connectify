@@ -1,0 +1,52 @@
+<% layout("./templates/index.ejs")%>
+<link rel="stylesheet" href="/styles/allUser.css" />
+<body>
+  <!-- Header -->
+  <div class="page-header">
+    <h1>User Directory</h1>
+    <p>Find and connect with interesting people!</p>
+  </div>
+  
+  <!-- Search Form -->
+  <div class="search-bar">
+    <form action="/profile/all" method="GET" class="search-form">
+      <input 
+        type="text" 
+        name="search" 
+        placeholder="Search by name or bio..." 
+        class="search-input"
+      >
+      <button type="submit" class="search-button"><i class="fa-solid fa-magnifying-glass"></i>&nbsp; Search</button>
+    </form>
+  </div>
+
+  <!-- User List -->
+  <div class="container">
+
+    <div class="row gy-4">
+      <%User.forEach((user)=>{%>
+      <div class="col-md-6 col-lg-4">
+        <div class="user-card">
+          <img src="<%=user.userImg%>" alt="User Image" class="user-image" />
+          <p class="user-name"><%=user.name%></p>
+          <p class="user-bio"><%=user.about%> | <%=user.mail%></p>
+          <div class="action-buttons">
+            <% if (currentUser.following.includes(user._id.toString())) { %>
+            <button class="btn btn-outline-secondary btn-sm" disabled>
+              Following
+            </button>
+            <% } else { %>
+            <a href="/profile/follow/<%=user._id%>" class="btn btn-follow"
+              >Follow</a
+            >
+            <% } %>
+            <a href="/profile/view/<%=user._id%>" class="btn btn-view"
+              >View Profile</a
+            >
+          </div>
+        </div>
+      </div>
+      <%})%>
+    </div>
+  </div>
+</body>

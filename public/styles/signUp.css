@@ -1,0 +1,46 @@
+/* Background gradient */
+body.bg-gradient {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to bottom right, #ff7eb3, #ff758c);
+  color: #333;
+  margin: 0;
+}
+
+/* Card design */
+.card {
+  border-radius: 16px;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
+  background: #fff;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #ff5d73;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #ff3c61;
+}
+
+/* Form input styling */
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.form-control:focus {
+  border-color: #ff5d73;
+  box-shadow: 0 0 4px rgba(255, 93, 115, 0.5);
+}
+
+/* Text links */
+.text-muted a {
+  color: #ff5d73;
+  font-weight: 500;
+}
+
+.text-muted a:hover {
+  text-decoration: underline;
+}

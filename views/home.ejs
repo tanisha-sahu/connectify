@@ -1,0 +1,118 @@
+<% layout("./templates/index.ejs")%>
+<link rel="stylesheet" href="/styles/home.css" />
+
+<body>
+  <!-- Main Content -->
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Sidebar -->
+      <aside class="col-md-3 d-none d-md-block">
+        <% if (curUser) { %>
+        <div class="user-profile-card">
+          <!-- Profile Header -->
+          <a href="/profile/view/<%=curUser._id%>">
+            <div class="profile-header">
+              <img
+                src="<%=curUser.userImg%>"
+                alt="User Image"
+                class="profile-image"
+              />
+            </div>
+
+            <!-- User Details -->
+            <div class="profile-body">
+              <h3 class="profile-username"><%= curUser.name %></h3>
+              <p class="profile-about">
+                <%= curUser.about || "Tell others about yourself!" %>
+              </p>
+              <a href="mailto:<%= curUser.mail %>" class="profile-email"
+                ><%= curUser.mail %></a
+              >
+            </div>
+          </a>
+
+          <!-- Stats Section -->
+          <div class="profile-stats">
+            <div class="stat">
+              <h4><%= curUser.follower.length %></h4>
+              <p>Followers</p>
+            </div>
+            <div class="stat">
+              <h4><%= curUser.following.length %></h4>
+              <p>Following</p>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </aside>
+
+      <!-- Feed -->
+      <main class="col-md-6 feed-container">
+        <% allBlog.forEach(blog =>{ %>
+        <div class="post-card">
+          <a
+            href="/profile/view/<%=blog.creatorId._id%>"
+            class="d-flex align-items-center p-3 post-header"
+          >
+            <img src="<%=blog.creatorId.userImg%>" alt="User" />
+            <div>
+              <h6 class="mb-0"><%=blog.creator%></h6>
+              <small class="text-muted"
+                ><%= new Date(blog.createdAt).toLocaleString()%></small
+              >
+            </div>
+          </a>
+          <img src="<%=blog.image%>" class="img-fluid post-img" alt="Post" />
+          <div class="p-3">
+            <p>
+              <%=blog.title%>
+              <a
+                class="btn btn-sm btn-primary ms-2"
+                href="/blog/view/<%=blog._id%>"
+                style="text-decoration: none"
+                >View</a
+              >
+            </p>
+            <div class="d-flex justify-content-between">
+              <a href="/profile/message" class="btn btn-light btn-sm"
+                ><i class="fas fa-thumbs-up"></i> Like</a
+              >
+              <a
+                href="/blog/view/<%=blog._id%>/#comment"
+                class="btn btn-light btn-sm"
+                ><i class="fas fa-comment"></i> Comment</a
+              >
+              <a href="/profile/premium" class="btn btn-light btn-sm"
+                ><i class="fas fa-share"></i> Share</a
+              >
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </main>
+
+      <!-- Right Sidebar (Optional) -->
+
+      <aside class="col-md-3 d-none d-md-block">
+        <div class="sidebar">
+          <h5>Inbox</h5>
+          <ul class="list-group">
+            <% curUser.following.forEach(user =>{ %>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              <%=user.name%>
+              <a href="/profile/message"
+                ><button class="btn btn-primary btn-sm">Message</button></a
+              >
+            </li>
+            <%})%>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>

@@ -1,0 +1,149 @@
+a {
+  text-decoration: none;
+}
+/* Page Header */
+.page-header {
+  text-align: center;
+  padding: 30px 15px;
+  background: linear-gradient(to right, #4e54c8, #8f94fb);
+  color: white;
+  border-bottom-left-radius: 60%;
+  border-bottom-right-radius: 60%;
+  margin-bottom: 30px;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* User Card */
+.user-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.user-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 2px solid #4e54c8;
+}
+
+.user-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.user-bio {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 5px 0 15px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.action-buttons .btn {
+  flex: 1;
+  font-size: 0.9rem;
+  border-radius: 50px;
+}
+
+.btn-follow {
+  background: #4e54c8;
+  color: white;
+  border: none;
+}
+
+.btn-follow:hover {
+  background: #3d42b2;
+}
+
+.btn-view {
+  border: 1px solid #4e54c8;
+  color: #4e54c8;
+  background: white;
+}
+
+.btn-view:hover {
+  background: #f0f1ff;
+}
+/* Centering the search bar */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* Styling the form */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Styling the input field */
+.search-input {
+  width: 300px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.search-input:focus {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-color: #007bff;
+}
+
+/* Styling the search button */
+.search-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+/* Adding responsive design */
+@media (max-width: 576px) {
+  .search-input {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,139 @@
+body {
+    background-color: #f0f2f5;
+}
+a{
+    text-decoration: none;
+}
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feed-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.post-card {
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.post-header {
+    cursor: pointer;
+}
+
+.post-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-img {
+    /* max-height: 400px; */
+    width: 100%;
+    object-fit: cover;
+}
+
+.sidebar {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.sidebar .list-group-item {
+    border: none;
+}
+
+
+
+
+
+
+.user-profile-card {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    padding: 15px;
+}
+
+.profile-header {
+    position: relative;
+    height: 150px;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    object-fit: cover;
+    position: relative;
+    top: 50px;
+}
+
+.profile-body {
+    margin-top: 20px;
+    padding: 5px;
+}
+
+.profile-username {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-about {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.profile-email {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.profile-email:hover {
+    text-decoration: underline;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 5px;
+    padding-top: 15px;
+}
+
+.stat {
+    text-align: center;
+    width: 50%;
+}
+
+.stat h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.stat p {
+    font-size: 0.85rem;
+    color: #777;
+    margin: 0;
+}

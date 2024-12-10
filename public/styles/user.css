@@ -1,0 +1,129 @@
+a{
+  text-decoration: none;
+}
+  /* Header Section */
+  .profile-header {
+    position: relative;
+    background: linear-gradient(to right, #3b82f6, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 30px 10px;
+    overflow: hidden;
+    border-radius: 0 0 40% 40%;
+    border-bottom: 5px solid #f1f5f9;
+  }
+  .profile-header .profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid white;
+    margin: auto;
+  }
+  .profile-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  .profile-header p {
+    font-size: 14px;
+    color: #d1d5db;
+  }
+  .profile-header .btn {
+    margin: 10px 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .profile-header .btn-light {
+    color: #2563eb;
+    border: 1px solid #2563eb;
+  }
+
+  /* Stats Section */
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .stats div {
+    text-align: center;
+  }
+  .stats div h4 {
+    font-size: 20px;
+    color: #2563eb;
+  }
+  .stats div p {
+    font-size: 14px;
+    color: #6b7280;
+  }
+
+  /* Blog Cards */
+  .blog-list {
+    margin-top: 20px;
+  }
+  .blog-card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .blog-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .blog-card .card-body {
+    padding: 15px;
+  }
+  .blog-card .card-title {
+    font-size: 18px;
+    color: #1f2937;
+  }
+  .blog-card .card-text {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  .blog-card .btn {
+    background-color: #2563eb;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+  }
+  .blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Recent Activity */
+  .recent-activity {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+  }
+  .recent-activity ul {
+    list-style: none;
+    padding: 0;
+  }
+  .recent-activity li {
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 10px;
+  }
+  .recent-activity li b {
+    color: #2563eb;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .profile-header {
+      border-radius: 0 0 20% 20%;
+    }
+  }

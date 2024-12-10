@@ -1,0 +1,27 @@
+<% layout("./templates/index.ejs")%>
+<link rel="stylesheet" href="/styles/follower.css">
+</head>
+<body>
+  <!-- Followers Section Inside a Div -->
+  <div class="followers-container">
+    <h2 class="page-title">Followers</h2>
+    <div class="followers-list">
+      <!-- Follower Card -->
+       <%User.follower.forEach((follower)=>{%>
+        <div class="follower-card">
+            <img src="<%=follower.userImg%>" alt="Profile Picture" class="follower-image">
+            <a href="/profile/view/<%=follower._id%>" class="follower-details">
+              <h3 class="follower-name"><%=follower.name%></h3>
+              <p class="follower-headline">Software Engineer at TechCorp</p>
+            </a>
+            <div class="follower-actions">
+              <a href="/profile/message" class="btn message">Message</a>
+              <%if(User._id.toString()==currUser.id.toString()){%>
+                <a class="btn unfollow" href="/profile/removeFollower/<%=follower._id%>">Remove</a>
+              <%}%>
+            </div>
+          </div>
+       <%})%>
+    </div>
+  </div>
+</body>

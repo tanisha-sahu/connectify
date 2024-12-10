@@ -1,0 +1,64 @@
+<% layout("./templates/index.ejs")%>
+<link rel="stylesheet" href="/styles/logIn.css" />
+<body class="bg-gradient">
+  <div
+    class="container d-flex justify-content-center align-items-center mt-5"
+  >
+    <div
+      class="card shadow-lg border-0 p-4"
+      style="max-width: 400px; width: 100%; border-radius: 12px"
+    >
+      <div class="card-body">
+        <h2 class="text-center mb-4">Welcome Back</h2>
+        <p class="text-center text-muted mb-4">Please log in to your account</p>
+        <form action="/user/logIn" method="post">
+          <!-- Username Field -->
+          <div class="mb-3">
+            <label for="name" class="form-label">Username</label>
+            <input
+              type="string"
+              id="username"
+              name="name"
+              class="form-control"
+              placeholder="Enter your Username"
+              required
+            />
+          </div>
+          <!-- Email Field -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="mail"
+              class="form-control"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <!-- Password Field -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <!-- Login Button -->
+          <button type="submit" class="btn btn-primary w-100">Log In</button>
+        </form>
+        <!-- Footer Links -->
+        <div class="text-center mt-3">
+          <p class="text-muted mb-1">
+            Don't have an account?
+            <a href="/user/signup" class="text-decoration-none">Sign Up</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

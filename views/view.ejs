@@ -1,0 +1,129 @@
+<% layout("./templates/index.ejs")%>
+<style>
+  .edtext {
+    display: none;
+  }
+  .coverImg {
+    width: 95%;
+  }
+  @media (min-width: 768px) {
+    .coverImg {
+      width: 50%;
+    }
+    .edtext {
+      display: inline-block;
+    }
+    .edicon {
+      display: none;
+    }
+  }
+</style>
+<body>
+  <div class="card text-center">
+    <div class="card-header">
+      <span style="font-size: 1.1rem; font-weight: 500"><%=Blog.creator%></span>
+      <%if(currUser && currUser.id.toString()==Blog.creatorId.toString()){%>
+      <div class="position-absolute top-0 end-0">
+        <a
+          href="/blog/edit/<%=Blog._id%>"
+          class="edtext btn btn-outline-primary btn-sm m-2"
+          style="font-weight: 500"
+          >Edit Blog</a
+        >
+        <a
+          href="/blog/delete/<%=Blog._id%>"
+          class="edtext btn btn-outline-danger btn-sm m-2"
+          style="font-weight: 500"
+          >Delete Blog</a
+        >
+        <a
+          href="/blog/edit/<%=Blog._id%>"
+          class="edicon text-primary m-2"
+          style="font-weight: 500"
+          ><i class="fa-solid fa-pen-to-square"></i
+        ></a>
+        <a
+          href="/blog/delete/<%=Blog._id%>"
+          class="edicon text-danger m-2"
+          style="font-weight: 500"
+          ><i class="fa-solid fa-trash"></i
+        ></a>
+      </div>
+      <%}%>
+    </div>
+    <div class="card-body">
+      <%if(Blog.image){%>
+      <img
+        class="m-auto mt-3 coverImg"
+        src="<%=Blog.image%>"
+        alt="coverimage"
+      />
+      <%}%>
+      <h5 class="card-title mt-3" style="font-size: 2rem"><%=Blog.title%></h5>
+      <p class="card-text mt-4" style="font-size: 1.1rem">
+        <%=Blog.description%>
+      </p>
+    </div>
+    <div class="card-footer text-body-secondary mt-5">
+      <%= new Date(Blog.createdAt).toLocaleString()%>
+    </div>
+  </div>
+
+  <!-- Comment Section -->
+  <%if(currUser){%>
+  <form
+    id="comment"
+    class="container mt-4"
+    action="/blog/comment/<%=Blog._id%>"
+    method="post"
+  >
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label" style="font-size: 1rem"
+        >Write a comment</label
+      >
+      <textarea
+        name="comment"
+        class="form-control"
+        aria-describedby="emailHelp"
+        placeholder="Write your comment here...."
+        style="height: 70px"
+        required
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Comment</button>
+  </form>
+  <%}%>
+  <div class="mt-4">
+    <%if(Blog.comments.length!=0){%>
+    <h3 class="ms-2">Comments :</h3>
+    <%}%>
+
+    <div class="container mt-5">
+      <div class="row">
+        <%Blog.comments.forEach(comment =>{%>
+        <div class="col-sm-3 mb-2">
+          <div class="card rating-card">
+            <div class="card-body">
+              <div class="card-header">
+                <span style="color: blue; font-weight: 600;"><%=comment.creator%></span> <% if(currUser && currUser.id.toString() ==
+                comment.creatorId.toString()){ %>
+                <a
+                  href="/blog/comment/delete/<%=Blog._id%>/<%=comment._id%>"
+                  class="position-absolute top-0 end-0 text-danger btn-sm m-1"
+                  style="font-weight: 500"
+                  ><i class="fa-solid fa-trash"></i></a>
+                <% } %>
+              </div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <p style="font-size: 1.1rem"><%=comment.comment%></p>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</body>

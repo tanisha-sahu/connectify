@@ -1,0 +1,65 @@
+<% layout("./templates/index.ejs")%>
+<link rel="stylesheet" href="/styles/user.css">
+<body>
+<!-- Profile Header -->
+<%if(User._id.toString() == currUser.id.toString()){%>
+  <a href="/profile/edit/<%=User._id%>" class="btn btn-lg p-1 mt-2 me-3 text-white z-3 position-fixed top-25 end-0"><i class="fa-solid fa-pen-to-square "></i></a>
+<%}%>
+<div class="profile-header">
+  <img src="<%=User.userImg%>" alt="Profile Picture" class="profile-pic">
+  <h2><%=User.name%></h2>
+  <p><%=User.mail%> | <%=User.about%></p>
+  <div>
+    <%if(User._id.toString() != currUser.id.toString()){%>
+      <% if (currentUser.following.includes(User._id.toString())) { %>
+        <a class="btn btn-outline-light btn-sm" href="/profile/unfollow/<%=User._id%>">Following</a>
+      <% } else { %>
+          <a href="/profile/follow/<%=User._id%>" class="btn btn-light">Follow</a>
+      <% } %>
+    <a href="/profile/message" class="btn btn-outline-light">Message</a>
+    <%}%>
+  </div>
+</div>
+
+<!-- Profile Stats -->
+<div class="container">
+  <div class="stats">
+    <div>
+      <a href="#blog">
+        <h4><%=Blog.length%></h4>
+        <p>Blogs</p>
+      </a>
+    </div>
+    <a href="/profile/follower/<%=User._id%>">
+      <div>
+        <h4><%=User.follower.length%></h4>
+        <p>Followers</p>
+      </div>
+    </a>
+    <a href="/profile/following/<%=User._id%>">
+      <div>
+        <h4><%=User.following.length%></h4>
+        <p>Following</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Blog List -->
+  <h3 class="text-center" id="blog">My Blogs</h3>
+  <div class="blog-list row" >
+    <%Blog.forEach((blog)=>{%>
+      <div class="col-md-6 mt-4">
+        <div class="blog-card">
+          <img src="<%=blog.image%>" alt="Blog Thumbnail">
+          <div class="card-body">
+            <h5 class="card-title"><%=blog.title%></h5>
+            <p class="card-text" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><%=blog.description%></p>
+            <a href="/blog/view/<%=blog._id%>" class="btn btn-primary">View full blog</a>
+          </div>
+        </div>
+      </div>
+    <%})%>
+    </div>
+  </div>
+
+</body>

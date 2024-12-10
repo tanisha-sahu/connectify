@@ -1,0 +1,77 @@
+
+/* Background styling */
+.outer {
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin: 0;
+    color: #333;
+}
+
+/* Container styles with box shadow */
+.card {
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Elegant box shadow */
+    max-width: 400px;
+    animation: fadeIn 1.5s ease;
+}
+
+/* Headline styling */
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Description text styling */
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Button styles */
+.premium-button {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(90deg, #ffdd00, #fbb034); /* Golden gradient */
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(255, 221, 0, 0.3); /* Subtle shadow */
+    transition: all 0.3s ease;
+}
+
+/* Add king crown icon to the button */
+.premium-button i {
+    margin-right: 8px;
+}
+
+/* Button hover effect */
+.premium-button:hover {
+    background: linear-gradient(90deg, #fbb034, #ffdd00);
+    box-shadow: 0 6px 15px rgba(255, 221, 0, 0.5); /* Glow effect on hover */
+    transform: translateY(-3px); /* Slight lift */
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

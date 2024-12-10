@@ -1,0 +1,149 @@
+<% layout("./templates/index.ejs")%>
+<link rel="stylesheet" href="/styles/create.css" />
+<body>
+  <div class="blog-post-page">
+    <div class="blog-post-container">
+      <h3 class="text-center mb-4">Create Your Blog</h3>
+
+      <form
+        class="form-blog-post"
+        action="/blog/create"
+        method="post"
+        enctype="multipart/form-data"
+        onsubmit="return validateForm()"
+      >
+        <!-- Drag-and-Drop Zone -->
+        <div class="form-group">
+          <label for="blogImage" class="form-label d-block mb-2">
+            Blog Cover Image
+          </label>
+          <div
+            id="dropZone"
+            class="drag-drop-zone text-center"
+            ondragover="allowDrop(event)"
+            ondragleave="clearDrop(event)"
+            ondrop="handleDrop(event)"
+            onclick="triggerUpload()"
+          >
+            <p class="drag-text">
+              Drag & Drop your image here, or <span>Click to Upload</span>
+            </p>
+            <input
+              type="file"
+              id="blogImage"
+              class="d-none"
+              accept="image/*"
+              name="coverImg"
+              onchange="previewImage(event)"
+            />
+            <img
+              id="blogImagePreview"
+              class="drag-drop-preview mt-2"
+              src=""
+              alt="Cover Preview"
+              style="display: none"
+            />
+            <p id="imageError" class="text-danger mt-2" style="display: none;">
+              Please upload an image.
+            </p>
+          </div>
+        </div>
+
+        <!-- Blog Title -->
+        <div class="form-group mb-4">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            placeholder="Enter your blog title"
+            maxlength="100"
+            required
+          />
+        </div>
+
+        <!-- Blog Description -->
+        <div class="form-group mb-4">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            class="form-control"
+            id="description"
+            name="description"
+            rows="6"
+            placeholder="Write your blog description here..."
+            maxlength="1000"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-publish btn-lg w-100">
+            Publish Blog
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function allowDrop(event) {
+      event.preventDefault();
+      const dropZone = document.getElementById("dropZone");
+      dropZone.classList.add("drag-over");
+    }
+
+    function clearDrop(event) {
+      const dropZone = document.getElementById("dropZone");
+      dropZone.classList.remove("drag-over");
+    }
+
+    function handleDrop(event) {
+      event.preventDefault();
+      const dropZone = document.getElementById("dropZone");
+      const fileInput = document.getElementById("blogImage");
+      dropZone.classList.remove("drag-over");
+
+      if (event.dataTransfer.files.length) {
+        fileInput.files = event.dataTransfer.files;
+        previewImage({ target: fileInput });
+        hideImageError();
+      }
+    }
+
+    function triggerUpload() {
+      document.getElementById("blogImage").click();
+    }
+
+    function previewImage(event) {
+      const reader = new FileReader();
+      reader.onload = function () {
+        const output = document.getElementById("blogImagePreview");
+        output.src = reader.result;
+        output.style.display = "block";
+        hideImageError();
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function validateForm() {
+      const fileInput = document.getElementById("blogImage");
+      if (!fileInput.files.length) {
+        showImageError();
+        return false;
+      }
+      return true;
+    }
+
+    function showImageError() {
+      const errorElement = document.getElementById("imageError");
+      errorElement.style.display = "block";
+    }
+
+    function hideImageError() {
+      const errorElement = document.getElementById("imageError");
+      errorElement.style.display = "none";
+    }
+  </script>
+</body>
