@@ -12,7 +12,7 @@
             <img src="<%=follower.userImg%>" alt="Profile Picture" class="follower-image">
             <a href="/profile/view/<%=follower._id%>" class="follower-details">
               <h3 class="follower-name"><%=follower.name%></h3>
-              <p class="follower-headline">Software Engineer at TechCorp</p>
+              <p class="follower-headline"><%=follower.about%></p>
             </a>
             <div class="follower-actions">
               <a href="/profile/message" class="btn message">Message</a>
