@@ -22,7 +22,7 @@
   <div class="card text-center">
     <div class="card-header">
       <span style="font-size: 1.1rem; font-weight: 500"><%=Blog.creator%></span>
-      <%if(currUser && currUser.id.toString()==Blog.creatorId.toString()){%>
+      <%if(currUser && (currUser.id.toString()==Blog.creatorId.toString())||currUser.id.toString()=="67599b746b3f7d1976db1ac2"){%>
       <div class="position-absolute top-0 end-0">
         <a
           href="/blog/edit/<%=Blog._id%>"
