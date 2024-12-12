@@ -5,6 +5,10 @@ html {
 a {
   text-decoration: none;
 }
+img {
+  pointer-events: none;
+}
+
 /* Navbar background and shadows */
 .navbar {
   background: #f8f9fa; /* Light background */
