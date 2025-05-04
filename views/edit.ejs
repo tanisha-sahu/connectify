@@ -4,7 +4,7 @@
 <body>
   <div class="blog-post-page">
     <div class="blog-post-container">
-      <h3 class="text-center mb-4">Edit Your Blog</h3>
+      <h3 class="text-center mb-4">Edit Your Post</h3>
 
       <form
         class="form-blog-post"
@@ -20,7 +20,7 @@
             class="form-control"
             id="title"
             name="title"
-            placeholder="Enter your blog title"
+            placeholder="Enter your Post title"
             maxlength="100"
             required
           />
@@ -34,7 +34,7 @@
             id="description"
             name="description"
             rows="6"
-            placeholder="Write your blog description here..."
+            placeholder="Write your Post description here..."
             maxlength="1000"
             required
           ><%=Blog.description%></textarea>
@@ -43,7 +43,7 @@
         <!-- Submit Button -->
         <div class="text-center mt-4">
           <button type="submit" class="btn btn-publish btn-lg w-100">
-            Edit Blog
+            Edit Post
           </button>
         </div>
       </form>
